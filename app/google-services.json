@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1012590517093",
+    "firebase_url": "https://shop-ridee.firebaseio.com",
+    "project_id": "shop-ridee",
+    "storage_bucket": "shop-ridee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012590517093:android:6052bfcae6595e26741f8c",
+        "android_client_info": {
+          "package_name": "com.astzz.shoprider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012590517093-ln1q6rjt6rdrvic0m32ekrlj4nf23d3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5HKGUVxMbnbF-jzmKCAgM27QiUGexCh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012590517093-ln1q6rjt6rdrvic0m32ekrlj4nf23d3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
