@@ -34,22 +34,6 @@
             android:layout_height="2dp"
             android:background="@color/colorBlue" />
 
-        <EditText
-            android:id="@+id/txt_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorWhite"
-            android:hint="Enter Address"
-            android:inputType="textEmailAddress"
-            android:padding="5dp"
-            android:textColor="@color/colorBlue"
-            android:textSize="22sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/colorBlue" />
 
         <EditText
             android:id="@+id/txt_phone"
@@ -74,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/colorWhite"
-            android:hint="Enter Machanic Name"
+            android:hint="address"
 
             android:inputType="text"
             android:padding="5dp"
@@ -98,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorWhite"
-                android:hint="Enter Machine Name"
+                android:hint="Enter age"
                 android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/colorBlue"

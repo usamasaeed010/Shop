@@ -20,7 +20,7 @@ public class SearchDetail extends AppCompatActivity {
         customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CustomerActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CustomerActivity.class).putExtra("data","customer");
                 startActivity(intent);
             }
         });
@@ -28,7 +28,7 @@ public class SearchDetail extends AppCompatActivity {
         Machanic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MachanicActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MachanicActivity.class).putExtra("data","mechanic");
                 startActivity(intent);
             }
         });
@@ -36,7 +36,7 @@ public class SearchDetail extends AppCompatActivity {
         supplier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SupplierActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SupplierActivity.class).putExtra("data","supplier");
                 startActivity(intent);
             }
         });

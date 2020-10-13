@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,18 +20,27 @@ public class MachanicActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private DBValues database;
     private ContactAdapter mAdapter;
-    private Button send,switchButon;
+    private Button send, switchButon;
+    Intent intent;
+    String people;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_machanic);
 
+
+        intent = getIntent();
+        people = intent.getStringExtra("data");
+
+        Toast.makeText(this, ""+people, Toast.LENGTH_SHORT).show();
+
         contact_array = new ArrayList<Contact>();
         database = new DBValues(this);
 
         send = findViewById(R.id.sendMasageCustomer);
-        switchButon =findViewById(R.id.swichButtonCustomer);
+        switchButon = findViewById(R.id.swichButtonCustomer);
         switchButon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,24 +63,29 @@ public class MachanicActivity extends AppCompatActivity {
         super.onStart();
         getContactFromDatabase();
     }
+
     private void getContactFromDatabase() {
         contact_array.clear();
-        Cursor cursor = database.getContactFromDB();
 
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                Contact contact = new Contact();
-                contact.setContactID(cursor.getInt(0));
-                contact.setContactName(cursor.getString(1));
-                contact.setContactPhone(cursor.getString(2));
-                contact.setContactEmail(cursor.getString(3));
-                contact.setContactAddress(cursor.getString(4));
-                contact.setContactAge(cursor.getString(5));
-                contact.setContactCNIC(cursor.getString(6));
-                cursor.moveToNext();
-                contact_array.add(contact);
+
+        if (!people.equals("")) {
+            Cursor cursor = database.getContactFromDB(people);
+
+
+            if (cursor.moveToFirst()) {
+                for (int i = 0; i < cursor.getCount(); i++) {
+                    Contact contact = new Contact();
+                    contact.setContactID(cursor.getInt(0));
+                    contact.setContactName(cursor.getString(1));
+                    contact.setContactPhone(cursor.getString(2));
+                    contact.setContactEmail(cursor.getString(3));
+                    contact.setContactAddress(cursor.getString(4));
+                    contact.setContactAge(cursor.getString(5));
+                    contact.setContactCNIC(cursor.getString(6));
+                    cursor.moveToNext();
+                    contact_array.add(contact);
+                }
             }
-        }
 
 //        if (cursor.moveToFirst()) {
 //            do {
@@ -88,8 +103,9 @@ public class MachanicActivity extends AppCompatActivity {
 //            } while (cursor.moveToNext());
 //        }
 
-        mAdapter.notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
+
+        }
 
     }
-
 }

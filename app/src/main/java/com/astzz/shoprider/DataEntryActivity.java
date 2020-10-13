@@ -34,14 +34,16 @@ public class DataEntryActivity extends AppCompatActivity implements View.OnClick
         if(view == swichBtn){
             Intent intent = new Intent(getApplicationContext(), SearchDetail.class);
             startActivity(intent);
-        }else if(view == customer2){
-            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+        }
+
+        else if(view == customer2){
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class).putExtra("data","customer");
             startActivity(intent);
         }else if(view == machanic2){
-            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class).putExtra("data","mechanic");
             startActivity(intent);
         }else if(view == supplier2){
-            Intent supplier = new Intent(getApplicationContext(), ResultActivity.class);
+            Intent supplier = new Intent(getApplicationContext(), ResultActivity.class).putExtra("data","supplier");
             startActivity(supplier);
         }else if(view == send){
             Intent supplier = new Intent(getApplicationContext(), ResultActivity.class);

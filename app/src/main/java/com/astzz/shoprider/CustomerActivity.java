@@ -7,15 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CustomerActivity extends AppCompatActivity {
 
@@ -27,7 +23,9 @@ public class CustomerActivity extends AppCompatActivity {
 
     private ContactAdapter mAdapter;
 
-    private Button send,switchButon;
+    private Button send, switchButon;
+    Intent intent;
+    String people;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +35,13 @@ public class CustomerActivity extends AppCompatActivity {
         contact_array = new ArrayList<Contact>();
         database = new DBValues(this);
 
+        intent = getIntent();
+        people = intent.getStringExtra("data");
+
+
+        Toast.makeText(this, ""+people, Toast.LENGTH_SHORT).show();
         send = findViewById(R.id.sendMasageCustomer);
-        switchButon =findViewById(R.id.swichButtonCustomer);
+        switchButon = findViewById(R.id.swichButtonCustomer);
         switchButon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -65,22 +68,26 @@ public class CustomerActivity extends AppCompatActivity {
 
     private void getContactFromDatabase() {
         contact_array.clear();
-        Cursor cursor = database.getContactFromDB();
 
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                Contact contact = new Contact();
-                contact.setContactID(cursor.getInt(0));
-                contact.setContactName(cursor.getString(1));
-                contact.setContactPhone(cursor.getString(2));
-                contact.setContactEmail(cursor.getString(3));
-                contact.setContactAddress(cursor.getString(4));
-                contact.setContactAge(cursor.getString(5));
-                contact.setContactCNIC(cursor.getString(6));
-                cursor.moveToNext();
-                 contact_array.add(contact);
+        if (!people.equals("")) {
+            Cursor cursor = database.getContactFromDB(people);
+
+
+            if (cursor.moveToFirst()) {
+                for (int i = 0; i < cursor.getCount(); i++) {
+
+                    Contact contact = new Contact();
+                    contact.setContactID(cursor.getInt(0));
+                    contact.setContactName(cursor.getString(1));
+                    contact.setContactPhone(cursor.getString(2));
+                    contact.setContactEmail(cursor.getString(3));
+                    contact.setContactAddress(cursor.getString(4));
+                    contact.setContactAge(cursor.getString(5));
+                    contact.setContactCNIC(cursor.getString(6));
+                    cursor.moveToNext();
+                    contact_array.add(contact);
+                }
             }
-        }
 
 //        if (cursor.moveToFirst()) {
 //            do {
@@ -98,9 +105,10 @@ public class CustomerActivity extends AppCompatActivity {
 //            } while (cursor.moveToNext());
 //        }
 
-        mAdapter.notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
+
+        }
 
     }
 
 }
-

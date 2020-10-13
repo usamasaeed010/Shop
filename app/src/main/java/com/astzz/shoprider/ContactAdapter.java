@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,13 +40,27 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
     public void onBindViewHolder(@NonNull final ContactHolder holder, int position) {
 
         final Contact contact = contact_array.get(position);
-        holder.txt_id.setText("ID: " + contact.getContactID());
-        holder.txt_name.setText("Name: " + contact.getContactName());
-        holder.txt_phone.setText("Phone: " + contact.getContactPhone());
-        holder.txt_email.setText("Email: " + contact.getContactEmail());
-        holder.txt_address.setText("Address: " + contact.getContactAddress());
-        holder.txt_age.setText("Age: " + contact.getContactAge());
-        holder.txt_cnic.setText("Cnic: " + contact.getContactCNIC());
+
+
+
+
+            holder.txt_id.setText("ID: " + contact.getContactID());
+            holder.txt_name.setText("Name: " + contact.getContactName());
+            holder.txt_phone.setText("Phone: " + contact.getContactPhone());
+            holder.txt_address.setText("Address: " + contact.getContactAddress());
+            holder.txt_age.setText("Age: " + contact.getContactAge());
+            holder.txt_cnic.setText("Cnic: " + contact.getContactCNIC());
+
+
+
+
+
+
+
+
+
+
+
 
         holder.ll_main.setOnClickListener(new View.OnClickListener() {
             @Override
